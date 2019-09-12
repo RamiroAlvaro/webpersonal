@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webpersonal.core.views import home, about, portfolio, contact
+from webpersonal.core.views import home, about, contact
+from webpersonal.portfolio.views import portfolio
+
+from django.conf import settings
 
 urlpatterns = [
     path('', home, name='home'),
@@ -24,3 +27,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
