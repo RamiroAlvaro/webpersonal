@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.test import TestCase
 from webpersonal.portfolio.models import Project
 
@@ -20,3 +21,7 @@ class ProjectModelTest(TestCase):
 
     def test_str(self):
         self.assertEqual('Un Título', str(self.project))
+
+    def test_created(self):
+        """Subscription must have an auto created at attr."""
+        self.assertIsInstance(self.project.created, datetime)
