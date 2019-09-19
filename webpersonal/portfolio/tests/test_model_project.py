@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.shortcuts import resolve_url as r
 from webpersonal.portfolio.models import Project
 
 
